@@ -9,7 +9,11 @@ module.exports = {
       lg: '976px',
       xl: '1440px',
     },
-    extend: {},
+    extend: {
+      backgroundImage:{
+        banner: "url('/src/assets/images/banner.jpg')"
+      }
+    },
   },
 
   // add custom theme from daisyui
