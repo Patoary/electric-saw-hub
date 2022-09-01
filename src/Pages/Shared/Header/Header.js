@@ -1,36 +1,66 @@
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
 import './Header.css';
-const Header = () => {
-    const [isMobile, setIsMobile] = useState(false);
-
+const Header = ({ children }) => {
+    const [sidebar, setSidebar] = useState(false);
     return (
-        <>
-           <nav className='navbar sticky-top'>
-               <h3 className='logo'>SK SAW</h3>
-               <ul className={isMobile ? 'nav-links-mobile' : 'nav-links'}
-               onClick={()=> setIsMobile(false)}               
-               >
-                   <Link to='/' className='home'>Home</Link>
-                   <Link to='/blogs' className='blogs'>Blogs</Link>
-                   <Link to='/aboutus' className='aboutus'>About</Link>
-                   <Link to='/dashboard' className='dashboard'>Dashboard</Link>
-                   <Link to='/login' className='login'>Login</Link>
-               </ul>
-               <button className='mobile-menu-icon'
-                    onClick={() => setIsMobile(!isMobile)}
-                >
-                    {isMobile ? (<FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>)
-                        :
-                        (<FontAwesomeIcon icon={faBars}></FontAwesomeIcon>)}
+        <nav>
+            <div class="drawer drawer-end">
+                <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content flex flex-col">
+                    <div class="w-full navbar bg-primary text-white">
+                        <div class="flex-none lg:hidden" >
+                            <label for="nav-drawer" tabIndex='0' class="btn btn-square btn-ghost">
+                                <FaIcons.FaBars />
+                            </label>
+                        </div>
+                        <div class="flex-1 px-2 mx-2">SK SAW</div>
+                        <div class="flex-none hidden lg:block">
+                            <ul class="menu menu-horizontal">
+                                <li><Link to='/' >Home</Link></li>
+                                <li><Link to='/blogs' >Blogs</Link></li>
+                                <li><Link to='/dashboard' >Dashboard</Link></li>
+                                <li><Link to='/products' >All Products</Link></li>
+                                <li><Link to='/login' >Login</Link></li>
+                                <li><Link to='/logout' >Logout</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {children}
+                </div>
+                <div class="drawer-side">
+                    <label for="nav-drawer" class="drawer-overlay"> </label>
+                    <ul onClick={() => setSidebar(!sidebar)} class="menu p-4 overflow-y-auto w-80 bg-primary text-white">
+                        <li><Link to='/' >Home</Link></li>
+                        <li><Link to='/blogs' >Blogs</Link></li>
 
-                </button>
-           </nav>
-           <Outlet />
-        </>
+                        <div className="collapse collapse-arrow">
+                            <input type="checkbox" className="peer" />
+                            <div className="collapse-title  rounded-tr-xl rounded-tl-xl bg-primary text-white text-start">
+                                Dashboard
+                            </div>
+                            <div className="collapse-content  rounded-br-xl rounded-bl-xl text-gray-300 ">
+                                <ul>
+                                    <li>
+                                        <Link to="/dashboard">My Orders</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/dashboard/add-review" > Add A Review </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <li><Link to='/login' >Login</Link></li>
+                        <li><Link to='/products' >Add Products</Link></li>
+                        <li><Link to='/logout' >Logout</Link></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     );
+
 };
 
 export default Header;
