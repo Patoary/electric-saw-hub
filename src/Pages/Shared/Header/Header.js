@@ -10,7 +10,7 @@ const Header = ({ children }) => {
             <div class="drawer drawer-end">
                 <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content flex flex-col">
-                    <div class="w-full navbar bg-primary text-white">
+                    <div class="w-full navbar bg-primary text-white sticky top-0">
                         <div class="flex-none lg:hidden" >
                             <label for="nav-drawer" tabIndex='0' class="btn btn-square btn-ghost">
                                 <FaIcons.FaBars />
