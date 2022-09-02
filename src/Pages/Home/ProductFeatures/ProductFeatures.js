@@ -1,16 +1,19 @@
 import React from 'react';
 import swal from 'sweetalert';
+import Heading from '../../../Components/Heading/Heading';
 import './ProductFeatures.css';
 
 const ProductFeatures = () => {
     return (
-        <div>
-            <div className="bg-gray-200 py-36">
+        <div className="bg-gray-200 py-36">
+            <Heading>Product Features</Heading>
+            <div>
+                
                 <div className="flex flex-col lg:flex-row justify-center items-center max-w-7xl px-8 lg:mx-auto gap-20">
                     <div className="flex-1">
-                        <h1 className="heading text-xl lg:text-2xl font-bold uppercase my-6">
+                        <Heading>
                             We try to Make Our saws be Comfortable
-                        </h1>
+                        </Heading>
                         <p className='text-md'>
                         Saws have been around since ancient times, and they're still indispensable tools today. Of course, saws have come a long way,
                          and DIY-ers and professionals in the twenty-first century have far more convenient and precise options to choose from than our

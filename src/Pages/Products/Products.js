@@ -1,9 +1,10 @@
 import React from 'react';
-
+import Heading from '../../Components/Heading/Heading';
+import './Products.css';
 const Products = () => {
     return (
         <div>
-            <h4>Our products sjfsfjsjfskfjlksjfdskfsfj</h4>
+            <Heading>Our Manufacturing Line</Heading>
         </div>
     );
 };

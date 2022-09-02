@@ -1,4 +1,6 @@
 import React from 'react';
+import './BusinessSummary.css';
+
 
 const BusinessSummary = () => {
     return (
