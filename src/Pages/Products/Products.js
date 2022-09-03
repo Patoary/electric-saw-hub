@@ -14,11 +14,11 @@ const Products = () => {
     }
     return (
         <div className=''>
-            <div className='bg-gradient-to-r from-[#00214124] to-[#19d3ae2e] py-10 px-12'>
+            <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] py-20 px-12'>
                 <div><Heading>Our Manufacturing Line</Heading></div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
                     {
-                        [...saws]?.reverse().slice(0, 3).map(saw => <ProductCard
+                        [...saws]?.reverse().slice(0, 6).map(saw => <ProductCard
                             key={saw._id}
                             saw={saw}
                         ></ProductCard>)
