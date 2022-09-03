@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Miter Saw",
+        "img":"",
+        "price": 299,
+        "description": "A mitre saw is a type of stationary saw designed to make precision cuts at multiple angles. The blade is pulled downwards onto the material, unlike with a circular saw where it feeds through the material. Mitre saws are best for cutting longer boards thanks to their large cutting capacities.",
+        "available": 8000,
+        "min-order-quantity":100
+    },
+    {
+        "name": "Chop Saw",
+        "img":"",
+        "price": 250,
+        "description": "The chop saw (AKA a miter saw) is a motorized woodworking power tool designed to accurately and precisely complete square and angled cuts in wood. It works by spinning a circular steel saw blade at high speed. The blade cuts through the wood, laid on the support table, when you push the handle downward.",
+        "available": 9000,
+        "min-order-quantity":100
+    },
+    {
+        "name": "Portable Band Saw",
+        "img":"",
+        "price": 399,
+        "description": "The portable band saw is one of the few tools that, when used with the right blade, is equally effective regardless of material. It can cut straight lines or curves, so it can be used for joints, precision cuts, or decorative work.",
+        "available": 12000,
+        "min-order-quantity":100
+    }
+]

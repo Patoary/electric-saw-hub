@@ -6,7 +6,10 @@ import './ProductFeatures.css';
 const ProductFeatures = () => {
     return (
         <div className="bg-gray-200 py-36">
+            <div className='mb-10'>
             <Heading>Product Features</Heading>
+
+            </div>
             <div>
                 
                 <div className="flex flex-col lg:flex-row justify-center items-center max-w-7xl px-8 lg:mx-auto gap-20">

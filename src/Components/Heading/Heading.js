@@ -3,7 +3,7 @@ import './Heading.css';
 
 const Heading = ({children}) => {
     return (
-        <div className=' flex justify-center text-primary text-xl lg:text-2xl font-bold uppercase m-5'>
+        <div className=' flex justify-center text-primary text-xl lg:text-2xl font-bold uppercase'>
             <span className='heading'>{children}</span>
         </div>
     );
