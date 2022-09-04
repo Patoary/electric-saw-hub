@@ -1,4 +1,5 @@
 import React from 'react';
+import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 
 const ProductCard = ({ saw }) => {
     const { name, price, img, description, available, minOrderQuantity } = saw;
@@ -19,7 +20,7 @@ const ProductCard = ({ saw }) => {
 
                         <div className='flex justify-between'>
                             <h3 className='text-secondary font-bold text-2xl lg:4xl'>Price : ${price}</h3>
-                            <button class="btn btn-primary">Buy Now</button>
+                           <PrimaryButton>Buy</PrimaryButton>
                         </div>
                     </div>
                 </div>

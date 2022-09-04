@@ -1,0 +1,37 @@
+.primary-button {
+  position: relative;
+  border: 2px solid #002141;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  display: inline;
+  z-index: 0;
+}
+
+.primary-button::after {
+  content: "";
+  display: block;
+  width: 10%;
+  height: 100%;
+  font-weight: 600;
+
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-bottom: 10px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease-in-out;
+}
+.primary-button:hover::after {
+  z-index: -2;
+  background: #002141;
+  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+.primary-button:hover {
+  color: white;
+  transition: color 0.3s ease-in 0.05s;
+}
