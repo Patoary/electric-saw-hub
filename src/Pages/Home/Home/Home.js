@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../../Login/Login/Login';
 import Products from '../../Products/Products';
+import Footer from '../../Shared/Header/Footer/Footer';
 import Banner from '../Banner/Banner';
 import BusinessSummary from '../BusinessSummary/BusinessSummary';
 import ProductFeatures from '../ProductFeatures/ProductFeatures';
@@ -14,6 +15,7 @@ const Home = () => {
             <ProductFeatures />
             <Products />
             <BusinessSummary/>
+            <Footer/>
         </div>
     );
 };
