@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { CustomLink } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import './Header.css';
+import CustomLink from '../../../Components/CustomLink/CustomLink';
 const Header = ({ children }) => {
     const [sidebar, setSidebar] = useState(false);
     return (
@@ -19,12 +20,12 @@ const Header = ({ children }) => {
                         <div class="flex-1 px-2 mx-2">SK SAW</div>
                         <div class="flex-none hidden lg:block">
                             <ul class="menu menu-horizontal">
-                                <li><Link to='/' >Home</Link></li>
-                                <li><Link to='/blogs' >Blogs</Link></li>
-                                <li><Link to='/dashboard' >Dashboard</Link></li>
-                                <li><Link to='/products' >All Products</Link></li>
-                                <li><Link to='/login' >Login</Link></li>
-                                <li><Link to='/logout' >Logout</Link></li>
+                                <li><CustomLink to='/' >Home</CustomLink></li>
+                                <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
+                                <li><CustomLink to='/dashboard' >Dashboard</CustomLink></li>
+                                <li><CustomLink to='/products' >All Products</CustomLink></li>
+                                <li><CustomLink to='/login' >Login</CustomLink></li>
+                                <li><CustomLink to='/logout' >Logout</CustomLink></li>
                             </ul>
                         </div>
                     </div>
@@ -33,8 +34,8 @@ const Header = ({ children }) => {
                 <div class="drawer-side">
                     <label for="nav-drawer" class="drawer-overlay"> </label>
                     <ul onClick={() => setSidebar(!sidebar)} class="menu p-4 overflow-y-auto w-80 bg-primary text-white">
-                        <li><Link to='/' >Home</Link></li>
-                        <li><Link to='/blogs' >Blogs</Link></li>
+                        <li><CustomLink to='/' >Home</CustomLink></li>
+                        <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
 
                         <div className="collapse collapse-arrow">
                             <input type="checkbox" className="peer" />
@@ -44,17 +45,17 @@ const Header = ({ children }) => {
                             <div className="collapse-content  rounded-br-xl rounded-bl-xl text-gray-300 ">
                                 <ul>
                                     <li>
-                                        <Link to="/dashboard">My Orders</Link>
+                                        <CustomLink to="/dashboard">My Orders</CustomLink>
                                     </li>
                                     <li>
-                                        <Link to="/dashboard/add-review" > Add A Review </Link>
+                                        <CustomLink to="/dashboard/add-review" > Add A Review </CustomLink>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <li><Link to='/login' >Login</Link></li>
-                        <li><Link to='/products' >Add Products</Link></li>
-                        <li><Link to='/logout' >Logout</Link></li>
+                        <li><CustomLink to='/login' >Login</CustomLink></li>
+                        <li><CustomLink to='/products' >Add Products</CustomLink></li>
+                        <li><CustomLink to='/logout' >Logout</CustomLink></li>
                     </ul>
                 </div>
             </div>

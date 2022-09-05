@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import CustomLink from '../../Components/CustomLink/CustomLink';
 
 const Dashboard = () => {
   return (
@@ -10,12 +11,12 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-[#002141f4] text-white text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-[#002141f4] text-white">
           <li>
-            <Link to="/dashboard" className="uppercase">My Orders</Link>
+            <CustomLink to="/dashboard" className="uppercase">My Orders</CustomLink>
           </li>
           <li>
-            <Link to="/dashboard/add-review" className="uppercase" > Add A Review </Link>
+            <CustomLink to="/dashboard/add-review" className="uppercase" > Add A Review </CustomLink>
           </li>
         </ul>
       </div>

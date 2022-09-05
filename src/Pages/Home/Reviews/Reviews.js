@@ -5,7 +5,7 @@ import Loading from '../../../Components/Loading/Loading';
 import Review from './Review';
 const Reviews = () => {
     const {data: reviews, isLoading} = useQuery('all-review', ()=> 
-    fetch('review.json')
+    fetch('http://localhost:4000/review')
     .then(res => res.json())
     )
 
@@ -19,8 +19,8 @@ const Reviews = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12'>
                 {
-                    [...reviews].reverse().map((review, index) => <Review
-                    key={review.index}
+                    [...reviews].reverse().map((review) => <Review
+                    key={review._ids}
                     review={review}
                     ></Review>)
                 }

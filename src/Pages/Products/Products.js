@@ -6,7 +6,7 @@ import Loding from '../../Components/Loading/Loading';
 import ProductCard from './ProductCard';
 const Products = () => {
     const { data: saws, isLoading } = useQuery('all-saws', () =>
-        fetch('saws.json')
+        fetch('http://localhost:4000/product')
             .then(res => res.json())
     )
     if (isLoading) {

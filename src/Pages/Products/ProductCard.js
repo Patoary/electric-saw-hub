@@ -20,7 +20,7 @@ const ProductCard = ({ saw }) => {
 
                         <div className='flex justify-between'>
                             <h3 className='text-secondary font-bold text-2xl lg:4xl'>Price : ${price}</h3>
-                           <PrimaryButton>Buy</PrimaryButton>
+                           <PrimaryButton>Purchase</PrimaryButton>
                         </div>
                     </div>
                 </div>
