@@ -27,20 +27,9 @@
 }
 
 .inside-banner a {
-    background-color: #002141;
-    padding: 5px 20px;
-    border-radius: 5px;
-    margin-top: 15px;
     font-weight: 500;
     color: rgb(255, 255, 255);
-    font-size: 20px;
 }
-
-.inside-banner a:hover {
-    background-color: #1f3954;
-}
-
-
 @media screen and (max-width: 640px) {
     .inside-banner h1 {
         font-size: 25px;

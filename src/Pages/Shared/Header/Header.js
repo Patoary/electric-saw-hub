@@ -11,13 +11,13 @@ const Header = ({ children }) => {
             <div class="drawer drawer-end">
                 <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content flex flex-col">
-                    <div class="w-full navbar bg-primary text-white sticky top-0 z-50 mx-auto">
+                    <div class="w-full navbar bg-primary text-white sticky top-0 z-50 mx-auto m-0">
                         <div class="flex-none lg:hidden" >
                             <label for="nav-drawer" tabIndex='0' class="btn btn-square btn-ghost">
                                 <FaIcons.FaBars />
                             </label>
                         </div>
-                        <div class="flex-1 px-2 mx-2">SK SAW</div>
+                        <div class="flex-1 px-5 font-bold text-2xl text-secondary">SK SAW</div>
                         <div class="flex-none hidden lg:block">
                             <ul class="menu menu-horizontal">
                                 <li><CustomLink to='/' >Home</CustomLink></li>
@@ -53,8 +53,8 @@ const Header = ({ children }) => {
                                 </ul>
                             </div>
                         </div>
-                        <li><CustomLink to='/login' >Login</CustomLink></li>
                         <li><CustomLink to='/products' >Add Products</CustomLink></li>
+                        <li><CustomLink to='/login' >Login</CustomLink></li>
                         <li><CustomLink to='/logout' >Logout</CustomLink></li>
                     </ul>
                 </div>

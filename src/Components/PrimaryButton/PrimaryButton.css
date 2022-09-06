@@ -25,7 +25,7 @@
 }
 .primary-button:hover::after {
   z-index: -2;
-  background: #002141;
+  background-image: linear-gradient(to right,#0021419f , #19d3aeb3);
   width: 100%;
   transform: scaleX(1);
   transform-origin: left;

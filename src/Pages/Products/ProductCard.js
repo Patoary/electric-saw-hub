@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 
 const ProductCard = ({ saw }) => {
-    const { name, price, img, description, available, minOrderQuantity } = saw;
+    const { name, price, img, description, available, minOrderQuantity, _id } = saw;
     return (
         <section>
             <div className='card card-compact max-w-lg bg-base-100 shadow-xl mt-10 mx-auto duration-200'>
@@ -20,7 +21,7 @@ const ProductCard = ({ saw }) => {
 
                         <div className='flex justify-between'>
                             <h3 className='text-secondary font-bold text-2xl lg:4xl'>Price : ${price}</h3>
-                           <PrimaryButton>Purchase</PrimaryButton>
+                           <PrimaryButton><Link to={`/purchase/${_id}`}>Purchase</Link></PrimaryButton>
                         </div>
                     </div>
                 </div>

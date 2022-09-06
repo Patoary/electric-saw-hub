@@ -10,6 +10,8 @@ import Reviews from './Pages/Home/Reviews/Reviews';
 import Products from './Pages/Products/Products';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import AddReview from './Pages/Dashboard/AddReview';
+import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import Purchase from './Pages/Purchase/Purchase';
 function App() {
   return (
     <div className="App">
@@ -19,6 +21,7 @@ function App() {
           <Route path='blogs' element={<Blogs />}></Route>
           <Route path='reviews' element={<Reviews />}></Route>
           <Route path='products' element={<Products />}></Route>
+          <Route path='purchase/:id' element={<Purchase/>}></Route>
           <Route path='dashboard' element={<Dashboard />}>
             <Route index element={<MyOrders/>}></Route>
             <Route path='add-review' element={<AddReview/>}></Route>
