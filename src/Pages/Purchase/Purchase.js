@@ -3,9 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import Heading from '../../Components/Heading/Heading';
 import Loading from '../../Components/Loading/Loading';
-import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 import auth from '../../firebase.init';
 
 const Purchase = () => {
