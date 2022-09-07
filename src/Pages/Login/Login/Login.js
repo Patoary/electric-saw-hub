@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
 import GoogleLogin from '../SocialLogin/GoogleLogin';
@@ -21,19 +21,22 @@ const Login = () => {
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
-
+    const location = useLocation();
     let logInError;
+    let from = location.state?.from?.pathname || '/';
+
+    if (user) {
+        navigate(from, {replace: true});
+    }
     if (loading) {
         return <Loading></Loading>
     }
+
 
     if (error) {
         logInError = <p className='text-red-500'><small>{error.message}</small></p>
     }
 
-    if (user) {
-        navigate('/');
-    }
     return (
         <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] '>
             <div className='flex justify-center items-center h-screen'>
@@ -100,7 +103,7 @@ const Login = () => {
 
                         <div className="divider">OR</div>
 
-                        <GoogleLogin/>
+                        <GoogleLogin />
 
                     </div>
                 </div>

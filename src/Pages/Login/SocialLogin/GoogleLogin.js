@@ -1,18 +1,21 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { FaGoogle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const GoogleLogin = () => {
     const navigate = useNavigate();
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const location = useLocation();
     let errorElement;
+    let from = location.state?.from?.pathname || '/';
+  
+    if (user) {
+        navigate(from, {replace: true});
+    }
     if (error) {
         errorElement = <p className='text-red-500 mb-5'> <small>Error:{error.message}</small></p>
-    }
-    if (user) {
-        navigate('/');
     }
     return (
         <div className='w-[286px] h-[46]'>
