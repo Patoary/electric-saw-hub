@@ -3,34 +3,71 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 import Loading from '../../Components/Loading/Loading';
 import auth from '../../firebase.init';
 
 const Purchase = () => {
     const [orderedQuantity, setOrdredQuantity] = useState(0);
-    const { user } = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const { id } = useParams();
-    const { register, formState: { errors }, handleSubmit, watch } = useForm()
+    const { register, formState: { errors }, handleSubmit, watch,reset } = useForm()
 
-    const { data: saw, isLoading } = useQuery(['saw', id], () =>
+    const { data: saw, isLoading, } = useQuery(['saw', id], () =>
         fetch(`http://localhost:4000/product/${id}`)
             .then(res => res.json())
     );
 
-    const orderingQuantity = parseInt(watch('my-quantity'));
+    const orderingQuantity = parseInt(watch('totalQuantity'));
     useEffect(() => {
         setOrdredQuantity(orderingQuantity);
     }, [orderingQuantity]);
 
     const onSubmit = orderData => {
+        setOrdredQuantity(orderData?.totalQuantity);
+        const orderSummery = {
+            ...orderData,
+            userName: user?.displayName,
+            userEmail: user?.email,
+            productName: name,
+            productId: _id,
+            productImage: img,
+            totalPrice: orderedQuantity * price,
+            
+        };
+        
+        fetch(`http://localhost:4000/order`,{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(orderSummery)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                swal({
+                    title: "Order Placed",
+                    text: "Please Pay For Proceed",
+                    icon: "success",
+                    buttons:false,
+                  });
+            }
+        })
+        reset();
+
 
     };
+
+
 
     if (isLoading) {
         return <Loading />
     }
 
-    const { name, img, price, description, available, minOrderQuantity } = saw;
+    const { name, img, price, description, available, minOrderQuantity, _id } = saw;
+
+
 
     return (
         <div>
@@ -99,15 +136,16 @@ const Purchase = () => {
                                                 message: 'Phone is required',
                                             },
                                             minLength: {
-                                                value: 9,
-                                                message: 'Please provide a valid phone number'
+                                                value: 6,
+                                                message: 'Please provide a valid phone number Must be 6 characters or longer'
                                             },
                                         })}
-                                        placeholder='Enter your mobile number'
+                                        placeholder='Enter your mobile number '
                                         className='input input-bordered w-full'
                                     />
                                     <label className='label'>
                                         {errors.phone?.type === 'required' && <span className='label-text-alt font-bold text-red-500'>{errors.phone.message}</span>}
+                                        {errors.phone?.type === 'minLength' && <span className='label-text-alt font-bold text-red-500'>{errors.phone.message}</span>}
                                     </label>
                                 </div>
 
@@ -118,7 +156,7 @@ const Purchase = () => {
                                                 <span className='label-text'>Minimum Order Quantity</span>
                                             </label>
                                             <input type="number"
-                                                {...register('my-quantity', {
+                                                {...register('totalQuantity', {
                                                     required: {
                                                         value: true,
                                                         message: 'Quantity is required to ordre',

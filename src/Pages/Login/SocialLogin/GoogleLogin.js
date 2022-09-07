@@ -12,6 +12,7 @@ const GoogleLogin = () => {
     let from = location.state?.from?.pathname || '/';
   
     if (user) {
+        console.log(user?.user?.displayName)
         navigate(from, {replace: true});
     }
     if (error) {
