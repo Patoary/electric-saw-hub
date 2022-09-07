@@ -2,12 +2,13 @@ import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
 
 
 const Login = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [
@@ -21,16 +22,20 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password)
     };
 
-    let signInError;
+    let logInError;
     if (loading) {
         return <Loading></Loading>
     }
 
     if (error) {
-        signInError = <p className='text-red-500'><small>{error.message}</small></p>
+        logInError = <p className='text-red-500'><small>{error.message}</small></p>
+    }
+
+    if (user) {
+        navigate('/');
     }
     return (
-        <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] py-20 px-12'>
+        <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] '>
             <div className='flex justify-center items-center h-screen'>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
@@ -85,14 +90,14 @@ const Login = () => {
 
                                 </label>
                             </div>
-                            {signInError}
+                            {logInError}
                             <input className='btn w-full bg-primary text-white hover:bg-secondary w-xs mt-3' type="submit" value='Login' />
                         </form>
                         <div className='flex justify-between'>
-                            <p className='text-center text-primary'><small> <Link to='/signup' className='text-secondary'>Don't have an account ?</Link></small></p>
                             <p className='text-center text-primary'><small> <Link to='/' className='text-secondary'>Forgot password ?</Link></small></p>
+                            <p className='text-center text-primary'><small> <Link to='/signup' className='text-secondary'>Don't have an account ?</Link></small></p>
                         </div>
-                       
+
                         <div className="divider">OR</div>
                         <button
                             className="btn btn-outline text-primary hover:bg-secondary"
@@ -101,7 +106,8 @@ const Login = () => {
                             Continue with Google</button>
                     </div>
                 </div>
-            </div>        </div>
+            </div>
+        </div>
     );
 };
 
