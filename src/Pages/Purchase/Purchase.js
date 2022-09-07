@@ -19,7 +19,7 @@ const Purchase = () => {
             .then(res => res.json())
     );
 
-    const orderingQuantity = watch('my-quantity');
+    const orderingQuantity = parseInt(watch('my-quantity'));
     useEffect(() => {
         setOrdredQuantity(orderingQuantity);
     }, [orderingQuantity]);
@@ -134,7 +134,7 @@ const Purchase = () => {
                                         </div>
                                         <div className='bg-secondary w-full py-3 text-center rounded-lg text-lg font-semibold ml-5 mt-8'>
                                             Total : <span className='text-primary font-bold px-3' >
-                                                {orderingQuantity * price}
+                                                {parseInt(orderingQuantity * price)}
                                             </span>
                                         </div>
                                     </div>
