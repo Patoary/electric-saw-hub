@@ -5,6 +5,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
+import GoogleLogin from '../SocialLogin/GoogleLogin';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -116,11 +117,7 @@ const SignUp = () => {
                     </div>
 
                     <div className="divider">OR</div>
-                    <button
-                        className="btn btn-outline text-primary hover:bg-secondary"
-                    >
-                        <span className='mr-2'><FaGoogle /></span>
-                        Continue with Google</button>
+                   <GoogleLogin/>
                 </div>
             </div>
         </div>

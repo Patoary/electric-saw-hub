@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { FaGoogle } from 'react-icons/fa';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
+import GoogleLogin from '../SocialLogin/GoogleLogin';
 
 
 const Login = () => {
@@ -99,11 +99,9 @@ const Login = () => {
                         </div>
 
                         <div className="divider">OR</div>
-                        <button
-                            className="btn btn-outline text-primary hover:bg-secondary"
-                        >
-                            <span className='mr-2'><FaGoogle /></span>
-                            Continue with Google</button>
+
+                        <GoogleLogin/>
+
                     </div>
                 </div>
             </div>
