@@ -3,6 +3,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 
 const GoogleLogin = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const GoogleLogin = () => {
     const location = useLocation();
     let errorElement;
     let from = location.state?.from?.pathname || '/';
-  
+  const {token} = useToken(user);
     if (user) {
         console.log(user?.user?.displayName)
         navigate(from, {replace: true});

@@ -5,6 +5,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import GoogleLogin from '../SocialLogin/GoogleLogin';
 
 const SignUp = () => {
@@ -19,7 +20,7 @@ const SignUp = () => {
     const onSubmit = data =>{
         createUserWithEmailAndPassword(data.email, data.password, data.name)
     };
-
+    const {token} = useToken(user);
     let signUpError;
 
     if(loading){
