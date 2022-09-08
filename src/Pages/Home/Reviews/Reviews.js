@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import Loading from '../../../Components/Loading/Loading';
 import Review from './Review';
 const Reviews = () => {
+    
     const {data: reviews, isLoading} = useQuery('all-review', ()=> 
     fetch('http://localhost:4000/review')
     .then(res => res.json())

@@ -1,7 +1,8 @@
 import React from 'react';
+import {MdDeleteOutline} from 'react-icons/md';
 
-const OrdersRow = ({order, index}) => {
-    const {productImage,status, address, totalQuantity, totalPrice ,productName, stats} = order;
+const OrdersRow = ({order, index, handleDelete}) => {
+    const {productImage,status, address, totalQuantity, totalPrice ,productName, _id} = order;
     return (
         <>
             <tr className='w-full'>
@@ -12,7 +13,11 @@ const OrdersRow = ({order, index}) => {
                 <td>{totalQuantity}</td>
                 <td>{totalPrice}</td>
                 <td>{status}</td>
-                <td><button className='text-red-500'>Pay</button></td>
+                <td><button className='text-red-500 text-xl font-bold'>Pay</button></td>
+                <td><MdDeleteOutline
+                 className= 'text-red-500 rounded-full text-3xl cursor-pointer'
+                 onClick={()=> handleDelete(_id)}
+                 /></td>
             </tr>
         </>
     );
