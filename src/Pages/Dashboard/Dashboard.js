@@ -6,12 +6,12 @@ const Dashboard = () => {
   return (
     <div class="drawer drawer-mobile">
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col items-center justify-center">
+      <div class="drawer-content flex flex-col">
       <Outlet></Outlet>
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-[#002141f4] text-white">
+        <ul className="menu p-4 overflow-y-auto w-64 bg-[#002141f4] text-white">
           <li>
             <CustomLink to="/dashboard" className="uppercase">My Orders</CustomLink>
           </li>

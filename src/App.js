@@ -14,7 +14,7 @@ import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import Purchase from './Pages/Purchase/Purchase';
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header>
         <Routes>
           <Route path='/' element={<Home />}></Route>

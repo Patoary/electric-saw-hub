@@ -17,11 +17,14 @@ const Purchase = () => {
         fetch(`http://localhost:4000/product/${id}`)
             .then(res => res.json())
     );
+    
 
     const orderingQuantity = parseInt(watch('totalQuantity'));
     useEffect(() => {
         setOrdredQuantity(orderingQuantity);
+
     }, [orderingQuantity]);
+
 
     const onSubmit = orderData => {
         setOrdredQuantity(orderData?.totalQuantity);
@@ -33,6 +36,7 @@ const Purchase = () => {
             productId: _id,
             productImage: img,
             totalPrice: orderedQuantity * price,
+            status: 'Pending'
             
         };
         
@@ -170,7 +174,7 @@ const Purchase = () => {
                                         </div>
                                         <div className='bg-secondary w-full py-3 text-center rounded-lg text-lg font-semibold ml-5 mt-8'>
                                             Total : <span className='text-primary font-bold px-3' >
-                                                {parseInt(orderingQuantity * price)}
+                                            {orderingQuantity * price}
                                             </span>
                                         </div>
                                     </div>
