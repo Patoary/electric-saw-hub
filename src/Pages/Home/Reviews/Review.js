@@ -1,8 +1,9 @@
 import React from 'react';
 import * as AiStar from 'react-icons/ai';
+import userDefaultImg from '../../../assets/images/userDefaultImg.png';
 
 const Review = ({review}) => {
-    const{name, img, description, ratings} = review;
+    const{name, img, reviewContent, ratings} = review;
     return (
         <div>
             <div class="card lg:max-w-lg bg-base-100 shadow-xl">
@@ -10,7 +11,9 @@ const Review = ({review}) => {
                     <div>
                         <div class="avatar flex items-center mb-3">
                             <div class="w-12 mr-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" alt='cutomer img'/>
+                                {
+                                    img ? <img src={img} alt='cutomer img'/> : <img src={userDefaultImg} alt='defautl img'/>
+                                }
                             </div>
                             <div>
                               <p>{name}</p>
@@ -19,7 +22,7 @@ const Review = ({review}) => {
                         </div>
                         <div className='flex justify-around items-center'>
                             <div>
-                            <p>{description}</p>
+                            <p>{reviewContent}</p>
                             </div>
                             <div className='flex items-center justify-center'>
                             <p className='mx-2 font-semibold'>Ratings: <span>{ratings}</span></p>

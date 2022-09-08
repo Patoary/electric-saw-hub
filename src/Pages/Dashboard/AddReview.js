@@ -1,11 +1,38 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
 import Heading from '../../Components/Heading/Heading';
+import auth from '../../firebase.init';
 
 const AddReview = () => {
-    const { handleSubmit, register, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data);
+    const [user] = useAuthState(auth);
+    const { handleSubmit, register, formState: { errors }, reset } = useForm();
+    const onSubmit = reviewData => {
+   
+        const reviewDetaits = {
+            ...reviewData,
+            img:user?.photoURL,    
+        }
+        fetch('http://localhost:4000/review',{
+            method:'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviewDetaits)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                swal({
+                    title: "Thank You",
+                    text: "For Your Comment",
+                    icon: "success",
+                    buttons:false,
+                  });
+            }
+        })
+        reset();
     }
     return (
         <div className='flex justify-center my-auto'>
@@ -57,6 +84,7 @@ const AddReview = () => {
                         Submit
                     </button>
                 </form>
+                
             </div>
         </div>
     );
