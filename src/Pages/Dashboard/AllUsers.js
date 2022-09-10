@@ -1,55 +1,44 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import axiosPrivate from '../../Api/axiosPrivate';
 import Loading from '../../Components/Loading/Loading';
-import auth from '../../firebase.init';
 import UsersRow from './UsersRow';
 
 const AllUsers = () => {
     const navigate = useNavigate();
-    
-    const { data: users, isLoading } = useQuery('user', () =>
-    
-        fetch('http://localhost:4000/user', {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            },
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    signOut(auth);
-                    localStorage.removeItem('accessTokne');
-                    navigate('/');
-                }
-                
-                
-                return res.json()
-            })
+    const [users, setUsers] = useState([]);
+    const { isLoading } = useQuery('user', () =>
+        axiosPrivate.get('http://localhost:4000/user')
+        .then(res => {
+            setUsers(res.data);
+        })        
     );
+   
 
-    // const handleDelete = id => {
-    //     const proceed = window.confirm('Are you sure want to delete this item ?')
-    //     if (proceed) {
-    //       const url = `http://localhost:4000/order/${id}`
-    //       fetch(url, {
-    //         method: 'DELETE',
-    //       })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //           const remaining = orders.filter(order => order._id !== id);
-    //           setOredrs(remaining);
-    //           swal({
-    //             title: "Successfully",
-    //             text: "Delete This Item",
-    //             icon: "success",
-    //             buttons: false,
-    //           });
-    //         })
-    //     }
-    //       return;
-    //   }
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure want to delete this item ?')
+        if (proceed) {
+          const url = `http://localhost:4000/user/${id}`
+          fetch(url, {
+            method: 'DELETE',
+          })
+            .then(res => res.json())
+            .then(data => {
+              const remaining = users.filter(order => order._id !== id);
+              setUsers(remaining);
+              swal({
+                title: "Successfully",
+                text: "Delete This Item",
+                icon: "success",
+                buttons: false,
+              });
+            })
+        }
+          return;
+      }
 
     if (isLoading) {
         <Loading />
@@ -75,6 +64,7 @@ const AllUsers = () => {
                                 index={index}
                                 key={user._id}
                                 user={user}
+                                handleDelete={handleDelete}
                             ></UsersRow>)
                         }
                     </tbody>

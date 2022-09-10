@@ -8,8 +8,7 @@ import axiosPrivate from '../../Api/axiosPrivate';
 const Products = () => {
     const { data: saws, isLoading } = useQuery('all-saws', () =>
         axiosPrivate.get('http://localhost:4000/product')
-        // .then(res => res.json())
-    )
+    );
     if (isLoading) {
         return <Loding />
     }
