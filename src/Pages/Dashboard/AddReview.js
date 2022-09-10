@@ -7,11 +7,13 @@ import auth from '../../firebase.init';
 
 const AddReview = () => {
     const [user] = useAuthState(auth);
+    console.log(user)
     const { handleSubmit, register, formState: { errors }, reset } = useForm();
     const onSubmit = reviewData => {
    
         const reviewDetaits = {
             ...reviewData,
+            name: user?.displayName,
             img:user?.photoURL,    
         }
         fetch('http://localhost:4000/review',{

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
@@ -16,9 +16,12 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, profileError] = useUpdateProfile(auth);
     const [token] = useToken(user);
-    const onSubmit = data => {
-        createUserWithEmailAndPassword(data.email, data.password, data.name)
+    const onSubmit = async data => {
+      await createUserWithEmailAndPassword(data.email, data.password, data.name);
+      await updateProfile({ displayName:data?.displayName})
+      console.log(data)
     };
     
 
@@ -29,7 +32,7 @@ const SignUp = () => {
         <Loading></Loading>
     }
 
-    if (error) {
+    if (error || profileError) {
         signUpError = <p className='text-red-500'><small>{error.message}</small></p>
     }
     if (token) {
@@ -48,7 +51,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input {...register("name", {
+                                <input {...register("displayName", {
                                     required: {
                                         value: true,
                                         message: 'Name is Required'
@@ -59,7 +62,7 @@ const SignUp = () => {
                                     className="input input-bordered w-full max-w-xs"
                                 />
                                 <label className="label">
-                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                    {errors.displayName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.displayName.message}</span>}
 
                                 </label>
                             </div>
