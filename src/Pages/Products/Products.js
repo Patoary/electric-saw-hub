@@ -7,7 +7,7 @@ import ProductCard from './ProductCard';
 const Products = () => {
     const { data: saws, isLoading } = useQuery('all-saws', () =>
         fetch('http://localhost:4000/product')
-            .then(res => res.json())
+        .then(res => res.json())
     )
     if (isLoading) {
         return <Loding />
@@ -18,7 +18,7 @@ const Products = () => {
                 <div><Heading>Our Manufacturing Line</Heading></div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
                     {
-                        [...saws]?.reverse().slice(0, 6).map(saw => <ProductCard
+                        saws && [...saws]?.reverse()?.slice(0, 6)?.map(saw => <ProductCard
                             key={saw._id}
                             saw={saw}
                         ></ProductCard>)

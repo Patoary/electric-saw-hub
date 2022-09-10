@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
@@ -19,12 +19,15 @@ const SignUp = () => {
     const [updateProfile, profileError] = useUpdateProfile(auth);
     const [token] = useToken(user);
     const onSubmit = async data => {
-      await createUserWithEmailAndPassword(data.email, data.password, data.name);
-      await updateProfile({ displayName:data?.displayName})
+        await createUserWithEmailAndPassword(data.email, data.password, data.name);
+        await updateProfile({ displayName: data?.displayName })
     };
-    
+
 
     let signUpError;
+    if (token) {
+        navigate('/');
+    }
 
 
     if (loading) {
@@ -34,9 +37,7 @@ const SignUp = () => {
     if (error) {
         signUpError = <p className='text-red-500'><small>{error.message}</small></p>
     }
-    if (token) {
-        navigate('/');
-    }
+
 
     return (
         <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] py-20 px-12'>

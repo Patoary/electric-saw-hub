@@ -1,18 +1,29 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../Components/Loading/Loading';
+import auth from '../../firebase.init';
 import UsersRow from './UsersRow';
 
 const AllUsers = () => {
-    const {data: users, isLoading} = useQuery('user', ()=> 
-    fetch('http://localhost:4000/user',{
-        method: 'GET',
-        headers:{
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        },
-    })
-    .then(res => res.json())
-    )
+    const navigate = useNavigate();
+    const { data: users, isLoading } = useQuery('user', () =>
+        fetch('http://localhost:4000/user', {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem('accessTokne');
+                    navigate('/');
+                }
+                return res.json()
+            }));
+
 
     if (isLoading) {
         <Loading />
@@ -32,7 +43,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users?.map((user, index) => <UsersRow
+                            users && [...users]?.reverse().map((user, index) => <UsersRow
                                 index={index}
                                 key={user._id}
                                 user={user}

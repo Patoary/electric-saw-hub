@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -12,9 +12,14 @@ const GoogleLogin = () => {
     const location = useLocation();
     let errorElement;
     let from = location.state?.from?.pathname || '/';
+    useEffect(()=>{
+        
+    },[]);
+  useEffect(()=>{
     if (token) {
         navigate(from, {replace: true});
     }
+  },[token, from, navigate]);
     if (error) {
         errorElement = <p className='text-red-500 mb-5'> <small>Error:{error.message}</small></p>
     }
