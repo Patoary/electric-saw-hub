@@ -21,7 +21,6 @@ const SignUp = () => {
     const onSubmit = async data => {
       await createUserWithEmailAndPassword(data.email, data.password, data.name);
       await updateProfile({ displayName:data?.displayName})
-      console.log(data)
     };
     
 
@@ -32,7 +31,7 @@ const SignUp = () => {
         <Loading></Loading>
     }
 
-    if (error || profileError) {
+    if (error) {
         signUpError = <p className='text-red-500'><small>{error.message}</small></p>
     }
     if (token) {
