@@ -12,6 +12,7 @@ const Header = ({ children }) => {
     const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     }
     return (
         <nav>

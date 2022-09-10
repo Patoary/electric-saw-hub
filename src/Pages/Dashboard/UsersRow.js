@@ -2,8 +2,8 @@ import React from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
 import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 
-const UsersRow = ({ order, index }) => {
-    const { _id, name, email } = order;
+const UsersRow = ({ user, index }) => {
+    const { name, email } = user;
     return (
         <tr className='w-full '>
             <th className='text-center'>{index + 1}</th>
