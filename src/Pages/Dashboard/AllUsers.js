@@ -8,7 +8,9 @@ import UsersRow from './UsersRow';
 
 const AllUsers = () => {
     const navigate = useNavigate();
+    
     const { data: users, isLoading } = useQuery('user', () =>
+    
         fetch('http://localhost:4000/user', {
             method: 'GET',
             headers: {
@@ -21,13 +23,39 @@ const AllUsers = () => {
                     localStorage.removeItem('accessTokne');
                     navigate('/');
                 }
+                
+                
                 return res.json()
-            }));
+            })
+    );
 
+    // const handleDelete = id => {
+    //     const proceed = window.confirm('Are you sure want to delete this item ?')
+    //     if (proceed) {
+    //       const url = `http://localhost:4000/order/${id}`
+    //       fetch(url, {
+    //         method: 'DELETE',
+    //       })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //           const remaining = orders.filter(order => order._id !== id);
+    //           setOredrs(remaining);
+    //           swal({
+    //             title: "Successfully",
+    //             text: "Delete This Item",
+    //             icon: "success",
+    //             buttons: false,
+    //           });
+    //         })
+    //     }
+    //       return;
+    //   }
 
     if (isLoading) {
         <Loading />
     }
+
+
     return (
         <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] h-screen w-full'>
             <div class="overflow-x-auto">

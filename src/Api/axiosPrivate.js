@@ -1,6 +1,5 @@
 import axios from "axios";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 
 const axiosPrivate = axios.create({});
@@ -28,8 +27,7 @@ axiosPrivate.interceptors.response.use(
         if (error.response.status === 403 || error.response.status === 401) {
             signOut(auth);
             localStorage.removeItem('accessToken');
-            // const navigate = useNavigate();
-            // navigate('/');
+            window.location.href = "/login";
         }
         return Promise.reject(error);
     });

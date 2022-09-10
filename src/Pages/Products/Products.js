@@ -4,10 +4,11 @@ import Heading from '../../Components/Heading/Heading';
 import './Products.css';
 import Loding from '../../Components/Loading/Loading';
 import ProductCard from './ProductCard';
+import axiosPrivate from '../../Api/axiosPrivate';
 const Products = () => {
     const { data: saws, isLoading } = useQuery('all-saws', () =>
-        fetch('http://localhost:4000/product')
-        .then(res => res.json())
+        axiosPrivate.get('http://localhost:4000/product')
+        // .then(res => res.json())
     )
     if (isLoading) {
         return <Loding />
@@ -18,7 +19,7 @@ const Products = () => {
                 <div><Heading>Our Manufacturing Line</Heading></div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
                     {
-                        saws && [...saws]?.reverse()?.slice(0, 6)?.map(saw => <ProductCard
+                        saws && [...saws.data]?.reverse()?.slice(0, 6)?.map(saw => <ProductCard
                             key={saw._id}
                             saw={saw}
                         ></ProductCard>)
