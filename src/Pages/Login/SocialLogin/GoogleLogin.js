@@ -8,12 +8,11 @@ import useToken from '../../../hooks/useToken';
 const GoogleLogin = () => {
     const navigate = useNavigate();
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [token] = useToken(user);
     const location = useLocation();
     let errorElement;
     let from = location.state?.from?.pathname || '/';
-  const {token} = useToken(user);
-    if (user) {
-        console.log(user?.user?.displayName)
+    if (token) {
         navigate(from, {replace: true});
     }
     if (error) {
