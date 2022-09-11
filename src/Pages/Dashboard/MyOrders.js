@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import auth from '../../firebase.init';
 import OrdersRow from './OrdersRow';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import axiosPrivate from '../../Api/axiosPrivate';
 
 const MyOrders = () => {
   const [orders, setOredrs] = useState([]);
+  const [user] = useAuthState(auth);
+  
   useEffect(() => {
-    fetch('http://localhost:4000/order')
-      .then(res => res.json())
-      .then(data => setOredrs(data))
-  }, []);
+    user &&
+    axiosPrivate.get(`http://localhost:4000/order?email=${user?.email}`)
+      .then(res => setOredrs(res.data))
+  }, [user]);
 
 
   const handleDelete = id => {

@@ -7,7 +7,6 @@ import auth from '../../firebase.init';
 
 const AddReview = () => {
     const [user] = useAuthState(auth);
-    console.log(user)
     const { handleSubmit, register, formState: { errors }, reset } = useForm();
     const onSubmit = reviewData => {
    

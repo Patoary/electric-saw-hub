@@ -16,28 +16,27 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile, profileError] = useUpdateProfile(auth);
+    const [updateProfile, profileError, updationg] = useUpdateProfile(auth);
     const [token] = useToken(user);
-    const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password, data.name);
-        await updateProfile({ displayName: data?.displayName })
-    };
+
 
 
     let signUpError;
+
+    if (loading || updationg) {
+        <Loading></Loading>
+    }
+    if (error || profileError) {
+        signUpError = <p className='text-red-500'><small>{error.message}</small></p>
+    }
     if (token) {
         navigate('/');
     }
 
-
-    if (loading) {
-        <Loading></Loading>
-    }
-
-    if (error) {
-        signUpError = <p className='text-red-500'><small>{error.message}</small></p>
-    }
-
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password, data.name);
+        await updateProfile({ displayName: data?.displayName })
+    };
 
     return (
         <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] py-20 px-12'>

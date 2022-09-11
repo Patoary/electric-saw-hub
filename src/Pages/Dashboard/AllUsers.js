@@ -1,14 +1,11 @@
-import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import axiosPrivate from '../../Api/axiosPrivate';
 import Loading from '../../Components/Loading/Loading';
 import UsersRow from './UsersRow';
 
 const AllUsers = () => {
-    const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const { isLoading } = useQuery('user', () =>
         axiosPrivate.get('http://localhost:4000/user')
