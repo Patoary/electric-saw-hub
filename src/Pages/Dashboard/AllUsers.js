@@ -7,35 +7,35 @@ import UsersRow from './UsersRow';
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
-    const { isLoading } = useQuery('user', () =>
+    const { isLoading, refetch } = useQuery('user', () =>
         axiosPrivate.get('http://localhost:4000/user')
-        .then(res => {
-            setUsers(res.data);
-        })        
+            .then(res => {
+                setUsers(res.data);
+            })
     );
-   
+
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to delete this item ?')
         if (proceed) {
-          const url = `http://localhost:4000/user/${id}`
-          fetch(url, {
-            method: 'DELETE',
-          })
-            .then(res => res.json())
-            .then(data => {
-              const remaining = users.filter(order => order._id !== id);
-              setUsers(remaining);
-              swal({
-                title: "Successfully",
-                text: "Delete This Item",
-                icon: "success",
-                buttons: false,
-              });
+            const url = `http://localhost:4000/user/${id}`
+            fetch(url, {
+                method: 'DELETE',
             })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = users.filter(order => order._id !== id);
+                    setUsers(remaining);
+                    swal({
+                        title: "Successfully",
+                        text: "Delete This Item",
+                        icon: "success",
+                        buttons: false,
+                    });
+                })
         }
-          return;
-      }
+        return;
+    }
 
     if (isLoading) {
         <Loading />
@@ -43,31 +43,33 @@ const AllUsers = () => {
 
 
     return (
-        <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] h-screen w-full'>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
-                    <thead>
-                        <tr>
-                            <th className='text-center'>Serial No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Make Admin</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users && [...users]?.reverse().map((user, index) => <UsersRow
-                                index={index}
-                                key={user._id}
-                                user={user}
-                                handleDelete={handleDelete}
-                            ></UsersRow>)
-                        }
-                    </tbody>
-                </table>
+        <div>
+            <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] h-screen w-full'>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <thead>
+                            <tr>
+                                <th className='text-center'>Serial No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Make Admin</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                users && [...users]?.reverse().map((user, index) => <UsersRow
+                                    index={index}
+                                    key={user._id}
+                                    user={user}
+                                    handleDelete={handleDelete}
+                                    refetch={refetch}
+                                ></UsersRow>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
         </div>
     );
 };
