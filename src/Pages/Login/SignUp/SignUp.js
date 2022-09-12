@@ -16,7 +16,7 @@ const SignUp = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile, profileError, updationg] = useUpdateProfile(auth);
+    const [updateProfile,  updationg] = useUpdateProfile(auth);
     const [token] = useToken(user);
 
 
@@ -26,7 +26,7 @@ const SignUp = () => {
     if (loading || updationg) {
         <Loading></Loading>
     }
-    if (error || profileError) {
+    if (error) {
         signUpError = <p className='text-red-500'><small>{error.message}</small></p>
     }
     if (token) {
