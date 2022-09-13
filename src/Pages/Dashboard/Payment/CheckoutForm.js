@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import axiosPrivate from '../../../Api/axiosPrivate';
+import { convertToHsl } from 'daisyui/src/colors/functions';
 
 
 const CheckoutForm = ({ order }) => {
@@ -7,10 +9,11 @@ const CheckoutForm = ({ order }) => {
     const element = useElements();
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const { totalPrice, userName, userEmail } = order.data;
+    const { totalPrice, userName, userEmail, _id } = order.data;
     console.log(totalPrice)
 
     useEffect(()=>{
@@ -50,6 +53,7 @@ const CheckoutForm = ({ order }) => {
 
         setCardError(error?.message || '')
         setSuccess('');
+        setProcessing(true);
         // confirm card payment 
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -65,10 +69,29 @@ const CheckoutForm = ({ order }) => {
         );
         if (intentError) {
             setCardError(intentError?.message);
+           setProcessing(false);
         } else {
             setCardError('');
             setTransactionId(paymentIntent.id);
             setSuccess('Congrats! Your payment is completed.')
+
+            // store payment on database
+            const payment = {
+                order: _id,
+                transactionId: paymentIntent.id
+            }
+            fetch(`http://localhost:4000/order/${_id}`, {
+                method: 'PATCH',
+                headers:{
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res => {
+                setProcessing(false);
+                console.log(res.data);
+            })
         }
     };
     return (
