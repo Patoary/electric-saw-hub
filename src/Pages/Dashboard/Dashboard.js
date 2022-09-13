@@ -17,24 +17,26 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-64 bg-[#002141f4] text-white">
-          <li>
-            <CustomLink to="/dashboard" className="uppercase">My Orders</CustomLink>
-          </li>
-          
+
           {
-            admin ? <li></li> :<li> <CustomLink to="/dashboard/add-review" className="uppercase" > Add A Review </CustomLink></li>
+            admin ? <li></li> : <li><CustomLink to="/dashboard" className="uppercase">My Orders</CustomLink></li>
+
           }
-          
-          
+
+          {
+            admin ? <li></li> : <li> <CustomLink to="/dashboard/add-review" className="uppercase" > Add A Review </CustomLink></li>
+          }
+
+
           {
             admin && <>
-            
-            <li>
-              <CustomLink to="/dashboard/all-users" className="uppercase" > All Users</CustomLink>
-            </li>
+
+              <li>
+                <CustomLink to="/dashboard/all-users" className="uppercase" > All Users</CustomLink>
+              </li>
             </>
           }
-          
+
 
 
         </ul>

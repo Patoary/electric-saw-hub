@@ -44,15 +44,16 @@ const MyOrders = () => {
         <table class="table w-full">
           <thead>
             <tr>
-              <th></th>
-              <th>Image</th>
-              <th>Product Name</th>
-              <th>Shipping Address</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Payment</th>
-              <th>Action</th>
+              <th className='text-center'>NO.</th>
+              <th className='text-center'>Image</th>
+              <th className='text-center'>Product Name</th>
+              <th className='text-center'>Shipping Address</th>
+              <th className='text-center'>Quantity</th>
+              <th className='text-center'>Price</th>
+              <th className='text-center'>Status</th>
+              <th className='text-center'>Payment</th>
+              <th className='text-center'>Transaction Id</th>
+              <th className='text-center'>Action</th>
 
             </tr>
           </thead>
