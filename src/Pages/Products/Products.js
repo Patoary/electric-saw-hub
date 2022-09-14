@@ -18,7 +18,7 @@ const Products = () => {
                 <div><Heading>Our Manufacturing Line</Heading></div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
                     {
-                        saws && [...saws.data]?.reverse()?.slice(0, 6)?.map(saw => <ProductCard
+                        saws && [...saws.data]?.reverse()?.slice(0, 3)?.map(saw => <ProductCard
                             key={saw._id}
                             saw={saw}
                         ></ProductCard>)

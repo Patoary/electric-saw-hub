@@ -1,15 +1,16 @@
-import { async } from '@firebase/util';
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import axiosPrivate from '../../../Api/axiosPrivate';
 import Heading from '../../../Components/Heading/Heading';
-import auth from '../../../firebase.init';
 
 const AddProducts = () => {
-    const [user] = useAuthState(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
-        console.log(data);
+        const newProductData = {
+            ...data,
+        }
+        axiosPrivate.post('http://localhost:4000/product', newProductData)
+        
     }
     return (
         <div className='bg-gradient-to-r from-[#00214124] to-[#19d3ae2e]'>
