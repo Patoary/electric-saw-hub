@@ -16,6 +16,7 @@ import AllUsers from './Pages/Dashboard/AllUsers';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Payment from './Pages/Dashboard/Payment/Payment';
+import Profile from './Pages/Dashboard/Profile/Profile';
 function App() {
   return (
     <div>
@@ -31,6 +32,7 @@ function App() {
             <Route path='add-review' element={<AddReview />}></Route>
             <Route path='all-users' element={<AllUsers />}></Route>
             <Route path='payment/:id' element={<Payment/>}></Route>
+            <Route path='profile' element={<Profile/>}></Route>
           </Route>
           <Route path='login' element={<Login />}></Route>
           <Route path='signup' element={<SignUp />}></Route>

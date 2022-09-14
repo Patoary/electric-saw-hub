@@ -36,9 +36,7 @@ const Dashboard = () => {
               </li>
             </>
           }
-
-
-
+          <li><CustomLink to="/dashboard/profile" className="uppercase">My Profile</CustomLink></li>
         </ul>
       </div>
 
