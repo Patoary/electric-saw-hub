@@ -7,7 +7,7 @@ import auth from '../../../firebase.init';
 
 const AddProducts = () => {
     const [user] = useAuthState(auth);
-    const { register, formState: { error }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async data => {
         console.log(data);
     }
@@ -27,40 +27,87 @@ const AddProducts = () => {
                     <label>Product Name</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("name", { required: true })}
+                        {...register("name", { 
+                            required: {
+                                value: true,
+                                message: 'Name is Required'
+                            },
+                        })}
                     />
+                    <label className="label">
+                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                    </label>
 
                     <label>Description</label>
                     <textarea
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("description", { required: true })}
+                        {...register("description", { 
+                            required: {
+                                value: true,
+                                message: 'Description is Required'
+                            },
+                         })}
                     />
+                    <label className="label">
+                        {errors.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors.description.message}</span>}
+                    </label>
 
                     <label>Price</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
                         type="number"
-                        {...register("price", { required: true })}
+                        {...register("price", {
+                            required: {
+                                value: true,
+                                message: 'Price is Required'
+                            },
+                         })}
                     />
-
-                    <label>Total Quantity</label>
+                    <label className="label">
+                        {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+                    </label>
+                    <label>Available Quantity</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
                         type="number"
-                        {...register("available", { required: true })}
+                        {...register("available", { 
+                            required: {
+                                value: true,
+                                message: 'Available quantity is Required'
+                            },
+                         })}
                     />
+                    <label className="label">
+                        {errors.available?.type === 'required' && <span className="label-text-alt text-red-500">{errors.available.message}</span>}
+                    </label>
                     <label>Minimum Order Quantity</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
                         type="number"
-                        {...register("minOrderQuantity", { required: true })}
+                        {...register("minOrderQuantity", { 
+                            required: {
+                                value: true,
+                                message: 'Minimum Order Quantity is Required'
+                            },
+                         })}
                     />
+                    <label className="label">
+                        {errors.minOrderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.minOrderQuantity.message}</span>}
+                    </label>
 
                     <label>Photo URL</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("img", { required: true })}
+                        {...register("img", { 
+                            required: {
+                                value: true,
+                                message: 'PhotoURL is Required'
+                            },
+                         })}
                     />
+                    <label className="label">
+                        {errors.img?.type === 'required' && <span className="label-text-alt text-red-500">{errors.img.message}</span>}
+                    </label>
 
                     <div className="flex justify-center">
                         <input
