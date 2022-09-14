@@ -30,10 +30,8 @@ const Dashboard = () => {
 
           {
             admin && <>
-
-              <li>
-                <CustomLink to="/dashboard/all-users" className="uppercase" > All Users</CustomLink>
-              </li>
+              <li><CustomLink to="/dashboard/all-users" className="uppercase" > All Users</CustomLink> </li>
+              <li><CustomLink to="/dashboard/add-product" className="uppercase">Add Porduct</CustomLink></li>
             </>
           }
           <li><CustomLink to="/dashboard/profile" className="uppercase">My Profile</CustomLink></li>
