@@ -31,6 +31,7 @@ const Header = ({ children }) => {
                                 <li><CustomLink to='/' >Home</CustomLink></li>
                                 <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
                                 <li><CustomLink to='/products' >All Products</CustomLink></li>
+                                <li><CustomLink to='/portfolio'>Portfolio</CustomLink></li>
 
                                 {
                                     user && <li><CustomLink to='/dashboard' >Dashboard</CustomLink></li>

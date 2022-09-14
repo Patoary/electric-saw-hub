@@ -62,7 +62,6 @@ const SignUp = () => {
                                 />
                                 <label className="label">
                                     {errors.displayName?.type === 'required' && <span className="label-text-alt text-red-500">{errors.displayName.message}</span>}
-
                                 </label>
                             </div>
                             <div className="form-control w-full max-w-xs">
