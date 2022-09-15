@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
+import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
 
-const ProductCard = ({ saw }) => {
-    const { name, price, img, description, available, minOrderQuantity, _id } = saw;
+const ProductCard = ({ product }) => {
+    const { name, price, img, description, available, minOrderQuantity, _id } = product;
     return (
         <section>
             <div className='card card-compact max-w-lg bg-base-100 shadow-xl mt-10 mx-auto duration-200'>

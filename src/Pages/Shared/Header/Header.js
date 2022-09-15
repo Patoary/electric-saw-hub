@@ -30,7 +30,7 @@ const Header = ({ children }) => {
                             <ul class="menu menu-horizontal">
                                 <li><CustomLink to='/' >Home</CustomLink></li>
                                 <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
-                                <li><CustomLink to='/products' >All Products</CustomLink></li>
+                                <li><CustomLink to='/all-product' >All Products</CustomLink></li>
                                 <li><CustomLink to='/portfolio'>Portfolio</CustomLink></li>
 
                                 {
@@ -48,7 +48,7 @@ const Header = ({ children }) => {
                     <ul onClick={() => setSidebar(!sidebar)} class="menu p-4 overflow-y-auto w-80 bg-primary text-white">
                         <li><CustomLink to='/' >Home</CustomLink></li>
                         <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
-                        <li><CustomLink to='/products' >All Products</CustomLink></li>
+                        <li><CustomLink to='/all-products' >All Products</CustomLink></li>
                         <li><CustomLink to='/portfolio'>Portfolio</CustomLink></li>
 
                         {
