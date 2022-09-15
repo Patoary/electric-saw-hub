@@ -4,12 +4,12 @@ import axiosPrivate from "../Api/axiosPrivate";
 
 
 const useProduct =() => {
-    const [saws, setSaws] = useState([]);
+    const [products, setProducts] = useState([]);
     useEffect(()=> {
         axiosPrivate.get('https://lit-wildwood-53633.herokuapp.com/product')
-        .then(res => setSaws(res.data))
+        .then(res => setProducts(res.data))
     },[]);
-    return [saws, setSaws];
+    return [products, setProducts];
 };
 
 export default useProduct;
