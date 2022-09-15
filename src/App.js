@@ -20,6 +20,7 @@ import Profile from './Pages/Dashboard/Profile/Profile';
 import AddProducts from './Pages/Dashboard/AddProduct/AddProducts';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import AllProducts from './Pages/AllProducts/AllProducts';
+import NotFound from './Pages/NotFound/NotFound';
 function App() {
   return (
     <div>
@@ -41,7 +42,9 @@ function App() {
             <Route path='add-product' element={<AddProducts/>}></Route>
           </Route>
           <Route path='login' element={<Login />}></Route>
-          <Route path='signup' element={<SignUp />}></Route>
+          <Route path='signup' element={<SignUp />}></Route>r
+          <Route path='*' element={<NotFound/>}></Route>
+
         </Routes>
       </Header>
       <ToastContainer/>
