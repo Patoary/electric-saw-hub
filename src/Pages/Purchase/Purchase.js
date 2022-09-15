@@ -14,7 +14,12 @@ const Purchase = () => {
     const { register, formState: { errors }, handleSubmit, watch,reset } = useForm()
 
     const { data: saw, isLoading, } = useQuery(['saw', id], () =>
-        fetch(`https://lit-wildwood-53633.herokuapp.com/product/${id}`)
+        fetch(`https://lit-wildwood-53633.herokuapp.com/product/${id}`,{
+            method:'GET',
+            headers:{
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
     );
     

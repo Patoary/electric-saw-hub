@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-// import { CustomLink } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import './Header.css';
 import CustomLink from '../../../Components/CustomLink/CustomLink';
@@ -8,6 +7,7 @@ import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useAdmin from '../../../hooks/useAdmin';
+import { Link } from 'react-router-dom';
 const Header = ({ children }) => {
     const [sidebar, setSidebar] = useState(false);
     const [user] = useAuthState(auth);
@@ -27,7 +27,9 @@ const Header = ({ children }) => {
                                 <FaIcons.FaBars />
                             </label>
                         </div>
-                        <div className="flex-1 px-5 font-bold text-2xl text-secondary">SK SAW</div>
+                        <div className="flex-1 px-5 font-bold text-2xl text-secondary">
+                            <Link to='/'>SK SAW</Link>
+                        </div>
                         <div className="flex-none hidden lg:block">
                             <ul className="menu menu-horizontal">
                                 <li><CustomLink to='/' >Home</CustomLink></li>

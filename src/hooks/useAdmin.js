@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axiosPrivate from "../Api/axiosPrivate";
 
 const useAdmin = user => {
-    const email = user.email;
+    const email = user?.email;
     const [admin, setAdmin] = useState(false);
     const [adminLoading, setAdminLoading] = useState(true);
     useEffect(() => {
