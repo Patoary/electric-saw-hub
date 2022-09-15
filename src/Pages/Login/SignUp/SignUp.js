@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../../Components/Loading/Loading';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
@@ -34,8 +33,8 @@ const SignUp = () => {
     }
 
     const onSubmit = async data => {
-        await createUserWithEmailAndPassword(data.email, data.password, data.name);
-        await updateProfile({ displayName: data?.displayName })
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data?.name })
     };
 
     return (
@@ -50,7 +49,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input {...register("displayName", {
+                                <input {...register("name", {
                                     required: {
                                         value: true,
                                         message: 'Name is Required'

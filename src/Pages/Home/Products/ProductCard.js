@@ -11,8 +11,8 @@ const ProductCard = ({ product }) => {
                     className='h-56 w-40 flex justify-center items-center mx-auto p-5'
                     ><img src={img} alt="saw" />
                     </figure>
-                    <div class="card-body">
-                        <h2 class="card-title text-primary mx-auto text-3xl">{name}</h2>
+                    <div className="card-body">
+                        <h2 className="card-title text-primary mx-auto text-3xl">{name}</h2>
                         <p>{description.slice(0, 110)}...</p>
                         <div className='flex justify-between'>
                             <h4 className='text-md font-semibold text-[#19d3aede]'>Available : {available}</h4>

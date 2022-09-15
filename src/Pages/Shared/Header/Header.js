@@ -16,18 +16,18 @@ const Header = ({ children }) => {
     }
     return (
         <nav>
-            <div class="drawer drawer-end">
-                <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content flex flex-col">
-                    <div class="w-full navbar bg-primary text-white sticky top-0 z-50 mx-auto m-0">
-                        <div class="flex-none lg:hidden" >
-                            <label for="nav-drawer" tabIndex='0' class="btn btn-square btn-ghost">
+            <div className="drawer drawer-end">
+                <input id="nav-drawer" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content flex flex-col">
+                    <div className="w-full navbar bg-primary text-white sticky top-0 z-50 mx-auto m-0">
+                        <div className="flex-none lg:hidden" >
+                            <label for="nav-drawer" tabIndex='0' className="btn btn-square btn-ghost">
                                 <FaIcons.FaBars />
                             </label>
                         </div>
-                        <div class="flex-1 px-5 font-bold text-2xl text-secondary">SK SAW</div>
-                        <div class="flex-none hidden lg:block">
-                            <ul class="menu menu-horizontal">
+                        <div className="flex-1 px-5 font-bold text-2xl text-secondary">SK SAW</div>
+                        <div className="flex-none hidden lg:block">
+                            <ul className="menu menu-horizontal">
                                 <li><CustomLink to='/' >Home</CustomLink></li>
                                 <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
                                 <li><CustomLink to='/all-product' >All Products</CustomLink></li>
@@ -43,9 +43,9 @@ const Header = ({ children }) => {
                     </div>
                     {children}
                 </div>
-                <div class="drawer-side">
-                    <label for="nav-drawer" class="drawer-overlay"> </label>
-                    <ul onClick={() => setSidebar(!sidebar)} class="menu p-4 overflow-y-auto w-80 bg-primary text-white">
+                <div className="drawer-side">
+                    <label for="nav-drawer" className="drawer-overlay"> </label>
+                    <ul onClick={() => setSidebar(!sidebar)} className="menu p-4 overflow-y-auto w-80 bg-primary text-white">
                         <li><CustomLink to='/' >Home</CustomLink></li>
                         <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
                         <li><CustomLink to='/all-products' >All Products</CustomLink></li>

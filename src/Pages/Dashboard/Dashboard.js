@@ -9,9 +9,9 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   return (
-    <div class="drawer drawer-mobile">
-      <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col">
+    <div className="drawer drawer-mobile">
+      <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
         <Outlet></Outlet>
       </div>
       <div className="drawer-side">

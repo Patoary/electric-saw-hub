@@ -75,16 +75,16 @@ const Purchase = () => {
 
     return (
         <div>
-            <div class="">
-                <div class="flex flex-col lg:flex-row-reverse justify-evenly items-center">
-                    <div class="text-center lg:text-left ml-5">
+            <div className="">
+                <div className="flex flex-col lg:flex-row-reverse justify-evenly items-center">
+                    <div className="text-center lg:text-left ml-5">
                         <div className=' max-w-lg bg-base-100  mx-auto duration-200'>
                             <figure
                                 className='h-96 w-56 flex justify-center items-center mx-auto'
                             ><img src={img} alt="saw" />
                             </figure>
-                            <div class="">
-                                <h2 class="text-primary font-bold text-center mx-auto text-3xl mb-3">{name}</h2>
+                            <div className="">
+                                <h2 className="text-primary font-bold text-center mx-auto text-3xl mb-3">{name}</h2>
                                 <p className='text-xl'>{description}</p>
                                 <div className='flex justify-between'>
                                     <h4 className='text-xl font-semibold'>Available : <span className='text-2xl text-primary'>{available}</span> Psc</h4>
@@ -95,8 +95,8 @@ const Purchase = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100 mt-16">
-                        <div class="card-body">
+                    <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100 mt-16">
+                        <div className="card-body">
                             <form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-control">
                                     <input
@@ -116,7 +116,7 @@ const Purchase = () => {
 
                                 </div>
 
-                                <div class="form-control">
+                                <div className="form-control">
                                     <input {...register('address', {
                                         required: {
                                             value: true,

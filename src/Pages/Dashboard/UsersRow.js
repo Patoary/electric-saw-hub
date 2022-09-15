@@ -9,7 +9,6 @@ const UsersRow = ({ user, index, handleDelete, refetch }) => {
     const makeAdmin = () => {
         axiosPrivate.put(`https://lit-wildwood-53633.herokuapp.com/user/admin/${email}`)
         .then(res => {
-            console.log(res.data)
             if(res.data.modifiedCount){
                 refetch();
                 toast.success('Successfully made an admin');

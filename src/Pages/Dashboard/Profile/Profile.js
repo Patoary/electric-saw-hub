@@ -42,7 +42,6 @@ const Profile = () => {
             image: user.photoURL,
             email: user.email,
         }
-        console.log(updatedProfile)
         await updateProfile({
             displayName: updatedInfo?.name,
             photoURL: updatedInfo?.image,
@@ -74,7 +73,7 @@ const Profile = () => {
                                 />
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                                {userInfo?.name ? userInfo?.name : "- - -"}
+                                {userInfo?.name ? userInfo?.name : "- - -" || user?.displayName ? user?.displayName : "- - -"}
                             </h1>
                             <h3 className="text-gray-600 font-lg text-semibold leading-6">
                                 {userInfo?.email ? userInfo?.email : "- - -"}
@@ -98,50 +97,50 @@ const Profile = () => {
                                 <div className="text-gray-700">
                                     <div className="text-xs lg:text-md">
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">Name</div>
-                                            <div className="py-2">
-                                                {userInfo?.name ? userInfo?.name : "- - -"}
+                                            <div className="py-2 font-bold">Name</div>
+                                            <div className="py-2 font-semibold">
+                                            {userInfo?.name ? userInfo?.name : "- - -" || user?.displayName ? user?.displayName : "- - -"}
                                             </div>
                                         </div>
 
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">Email.</div>
-                                            <div className="py-2 w-[20ch]">
+                                            <div className="py-2 font-bold">Email.</div>
+                                            <div className="py-2 w-[20ch] font-semibold">
                                                 {userInfo?.email ? userInfo?.email : "- - -"}
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">Gender</div>
-                                            <div className="py-2">
+                                            <div className="py-2 font-bold">Gender</div>
+                                            <div className="py-2 font-semibold">
 
                                                 {userInfo?.gender ? userInfo?.gender : "- - -"}
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">Contact No.</div>
-                                            <div className="py-2">
+                                            <div className="py-2 font-bold">Contact No.</div>
+                                            <div className="py-2 font-semibold">
 
                                                 {userInfo?.phone ? userInfo?.phone : "- - -"}
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">Address</div>
-                                            <div className="py-2">
+                                            <div className="py-2 font-bold">Address</div>
+                                            <div className="py-2 font-semibold">
 
                                                 {userInfo?.address ? userInfo?.address : "- - -"}
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">Education</div>
-                                            <div className="py-2">
+                                            <div className="py-2 font-bold">Education</div>
+                                            <div className="py-2 font-semibold">
                                                 {userInfo?.education ? userInfo?.education : "- - -"}
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2">
-                                            <div className="py-2 font-semibold">
+                                            <div className="py-2 font-bold">
                                                 LinkedIn profile link
                                             </div>
-                                            <div className="py-2">
+                                            <div className="py-2 font-semibold">
                                                 <Link
                                                     target="_blank"
                                                     rel="noreferrer"
@@ -181,7 +180,7 @@ const Profile = () => {
                                     </div>
                                   </span> 
                                     :
-                                    <span class="text-green-500">
+                                    <span className="text-green-500">
                                     <svg
                                         className="h-5"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +216,7 @@ const Profile = () => {
                                                 type="text"
                                                 {...register("name", {
                                                     minLength: {
-                                                        value: 4,
+                                                        value: 2,
                                                         message: "Minimum Four Characters",
                                                     },
                                                 })}

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import axiosPrivate from '../../../Api/axiosPrivate';
-import { convertToHsl } from 'daisyui/src/colors/functions';
 
 
 const CheckoutForm = ({ order }) => {
@@ -14,8 +12,6 @@ const CheckoutForm = ({ order }) => {
     const [clientSecret, setClientSecret] = useState('');
 
     const { totalPrice, userName, userEmail, _id } = order.data;
-    console.log(totalPrice)
-
     useEffect(()=>{
         fetch('https://lit-wildwood-53633.herokuapp.com/create-payment-intent', {
             method:'POST',
@@ -28,7 +24,6 @@ const CheckoutForm = ({ order }) => {
         .then(res => res.json())
         .then(data => {
             if(data?.clientSecret){
-                console.log(clientSecret)
                 setClientSecret(data.clientSecret);
             }
         });
@@ -90,7 +85,6 @@ const CheckoutForm = ({ order }) => {
             })
             .then(res => {
                 setProcessing(false);
-                console.log(res.data);
             })
         }
     };

@@ -110,7 +110,7 @@ const Portfolio = () => {
                             <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
                                 {
                                     skills.map((skill, index) => <SkillCard
-                                    index= {index}
+                                    key={index}
                                     skill= {skill}
                                     ></SkillCard>)
                                 }

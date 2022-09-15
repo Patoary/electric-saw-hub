@@ -45,8 +45,8 @@ const AllUsers = () => {
     return (
         <div>
             <div className='bg-gradient-to-r  from-[#00214124] to-[#19d3ae2e] h-screen w-full'>
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th className='text-center'>Serial No</th>
