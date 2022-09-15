@@ -10,7 +10,7 @@ const AddProducts = () => {
             ...data,
         }
         axiosPrivate.post('https://lit-wildwood-53633.herokuapp.com/product', newProductData)
-        
+        reset();
     }
     return (
         <div className='bg-gradient-to-r from-[#00214124] to-[#19d3ae2e]'>

@@ -7,9 +7,11 @@ import CustomLink from '../../../Components/CustomLink/CustomLink';
 import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import useAdmin from '../../../hooks/useAdmin';
 const Header = ({ children }) => {
     const [sidebar, setSidebar] = useState(false);
     const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
     const logout = () => {
         signOut(auth);
         localStorage.removeItem('accessToken');
@@ -61,17 +63,25 @@ const Header = ({ children }) => {
                                 </div>
                                 <div className="collapse-content  rounded-br-xl rounded-bl-xl text-gray-300 ">
                                     <ul>
-                                        <li>
-                                            <CustomLink to="/dashboard">My Orders</CustomLink>
-                                        </li>
-                                        <li>
-                                            <CustomLink to="/dashboard/add-review" > Add A Review </CustomLink>
-                                        </li>
+                                        <li><CustomLink to="/dashboard" className="uppercase">My Orders</CustomLink></li>
+
+                                        {
+                                            admin ? <li></li> : <li> <CustomLink to="/dashboard/add-review" className="uppercase" > Add A Review </CustomLink></li>
+                                        }
+
+
+                                        {
+                                            admin && <>
+                                                <li><CustomLink to="/dashboard/all-users" className="uppercase" > All Users</CustomLink> </li>
+                                                <li><CustomLink to="/dashboard/add-product" className="uppercase">Add Porduct</CustomLink></li>
+                                            </>
+                                        }
+                                        <li><CustomLink to="/dashboard/profile" className="uppercase">My Profile</CustomLink></li>
                                     </ul>
                                 </div>
                             </div>
                         }
-                        
+
 
                         <li>{user ? <button onClick={logout}>Logout</button> : <CustomLink to='/login'>Login</CustomLink>}</li>
                     </ul>

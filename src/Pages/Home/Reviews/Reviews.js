@@ -6,7 +6,12 @@ import Review from './Review';
 const Reviews = () => {
     
     const {data: reviews, isLoading} = useQuery('all-review', ()=> 
-    fetch('https://lit-wildwood-53633.herokuapp.com/review')
+    fetch('https://lit-wildwood-53633.herokuapp.com/review',{
+        method:'GET',
+        headers:{
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
     .then(res => res.json())
     )
 

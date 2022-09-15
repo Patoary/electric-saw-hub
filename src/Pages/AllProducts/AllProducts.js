@@ -11,7 +11,7 @@ const AllProducts = () => {
                 <div><Heading>Our Manufacturing Line</Heading></div>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
                     {
-                        products?.reverse()?.map(product => <ProductCard
+                        [...products]?.reverse()?.map(product => <ProductCard
                             key={product._id}
                             product={product}
                         ></ProductCard>)
