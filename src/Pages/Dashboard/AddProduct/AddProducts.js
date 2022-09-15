@@ -9,7 +9,7 @@ const AddProducts = () => {
         const newProductData = {
             ...data,
         }
-        axiosPrivate.post('http://localhost:4000/product', newProductData)
+        axiosPrivate.post('https://lit-wildwood-53633.herokuapp.com/product', newProductData)
         
     }
     return (

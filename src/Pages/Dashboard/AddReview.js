@@ -15,7 +15,7 @@ const AddReview = () => {
             name: user?.displayName,
             img:user?.photoURL,    
         }
-        fetch('http://localhost:4000/review',{
+        fetch('https://lit-wildwood-53633.herokuapp.com/review',{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

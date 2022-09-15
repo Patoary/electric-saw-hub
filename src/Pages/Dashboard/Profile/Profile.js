@@ -21,7 +21,7 @@ const Profile = () => {
     } = useForm();
 
     const { isLoading, refetch, isError } = useQuery(['userInfo', user.email], () =>
-        axiosPrivate.get(`http://localhost:4000/user-data?email=${user.email}`)
+        axiosPrivate.get(`https://lit-wildwood-53633.herokuapp.com/user-data?email=${user.email}`)
             .then(res => {
                 setUserInfo(res.data)
             })
@@ -48,7 +48,7 @@ const Profile = () => {
             photoURL: updatedInfo?.image,
         });
 
-        await axiosPrivate.patch(`http://localhost:4000/user/${userInfo._id}`, updatedProfile)
+        await axiosPrivate.patch(`https://lit-wildwood-53633.herokuapp.com/user/${userInfo._id}`, updatedProfile)
             .then(res => {
                 if (res.data.success) {
                     toast.success('Successfully updated your profile');

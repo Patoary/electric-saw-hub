@@ -17,7 +17,7 @@ const CheckoutForm = ({ order }) => {
     console.log(totalPrice)
 
     useEffect(()=>{
-        fetch('http://localhost:4000/create-payment-intent', {
+        fetch('https://lit-wildwood-53633.herokuapp.com/create-payment-intent', {
             method:'POST',
             headers:{
                 'content-type': 'application/json',
@@ -80,7 +80,7 @@ const CheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:4000/order/${_id}`, {
+            fetch(`https://lit-wildwood-53633.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers:{
                     'content-type': 'application/json',

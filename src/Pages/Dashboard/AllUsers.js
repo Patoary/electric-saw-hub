@@ -8,7 +8,7 @@ import UsersRow from './UsersRow';
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
     const { isLoading, refetch } = useQuery('user', () =>
-        axiosPrivate.get('http://localhost:4000/user')
+        axiosPrivate.get('https://lit-wildwood-53633.herokuapp.com/user')
             .then(res => {
                 setUsers(res.data);
             })
@@ -18,7 +18,7 @@ const AllUsers = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure want to delete this item ?')
         if (proceed) {
-            const url = `http://localhost:4000/user/${id}`
+            const url = `https://lit-wildwood-53633.herokuapp.com/user/${id}`
             fetch(url, {
                 method: 'DELETE',
             })

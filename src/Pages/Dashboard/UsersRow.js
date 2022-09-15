@@ -7,7 +7,7 @@ import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
 const UsersRow = ({ user, index, handleDelete, refetch }) => {
     const { name, email, _id, role } = user;
     const makeAdmin = () => {
-        axiosPrivate.put(`http://localhost:4000/user/admin/${email}`)
+        axiosPrivate.put(`https://lit-wildwood-53633.herokuapp.com/user/admin/${email}`)
         .then(res => {
             console.log(res.data)
             if(res.data.modifiedCount){

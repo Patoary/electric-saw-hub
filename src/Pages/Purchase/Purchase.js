@@ -14,7 +14,7 @@ const Purchase = () => {
     const { register, formState: { errors }, handleSubmit, watch,reset } = useForm()
 
     const { data: saw, isLoading, } = useQuery(['saw', id], () =>
-        fetch(`http://localhost:4000/product/${id}`)
+        fetch(`https://lit-wildwood-53633.herokuapp.com/product/${id}`)
             .then(res => res.json())
     );
     
@@ -40,7 +40,7 @@ const Purchase = () => {
             
         };
         
-        fetch(`http://localhost:4000/order`,{
+        fetch(`https://lit-wildwood-53633.herokuapp.com/order`,{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

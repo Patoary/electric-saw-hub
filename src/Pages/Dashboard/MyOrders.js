@@ -11,7 +11,7 @@ const MyOrders = () => {
   
   useEffect(() => {
     user &&
-    axiosPrivate.get(`http://localhost:4000/order?email=${user?.email}`)
+    axiosPrivate.get(`https://lit-wildwood-53633.herokuapp.com/order?email=${user?.email}`)
       .then(res => setOredrs(res.data))
   }, [user]);
 
@@ -19,7 +19,7 @@ const MyOrders = () => {
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure want to delete this item ?')
     if (proceed) {
-      const url = `http://localhost:4000/order/${id}`
+      const url = `https://lit-wildwood-53633.herokuapp.com/order/${id}`
       fetch(url, {
         method: 'DELETE',
       })

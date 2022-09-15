@@ -7,7 +7,7 @@ import ProductCard from './ProductCard';
 import axiosPrivate from '../../Api/axiosPrivate';
 const Products = () => {
     const { data: saws, isLoading } = useQuery('all-saws', () =>
-        axiosPrivate.get('http://localhost:4000/product')
+        axiosPrivate.get('https://lit-wildwood-53633.herokuapp.com/product')
     );
     if (isLoading) {
         return <Loding />

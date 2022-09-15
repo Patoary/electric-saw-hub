@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51LaKKLF5F0rQ849D8uHdutCmqIwtTGDp0Z85A
 const Payment = () => {
     const {id} = useParams();
     const {data: order, isLoading} = useQuery('order', ()=>
-    axiosPrivate.get(`http://localhost:4000/order/${id}`)
+    axiosPrivate.get(`https://lit-wildwood-53633.herokuapp.com/order/${id}`)
     ) 
     if(isLoading){
         return <Loading/>
