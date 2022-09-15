@@ -1,7 +1,23 @@
 import React from 'react';
 import profilePic from '../../assets/images/Image.PNG';
-
+import SkillCard from './SkillCard';
 const Portfolio = () => {
+    const skills = [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "React.js",
+        "node.js",
+        "express.js",
+        "mongodb",
+        "Firebase",
+        "stripe",
+        "axios",
+        "reactquery",
+        "tailwind",
+        "bootstrap",
+        "daisyui",
+      ];
     return (
         <div>
             <div className="bg-gradient-to-r from-[#19d3ae2e] to-[#00214124] min-h-screen">
@@ -15,61 +31,39 @@ const Portfolio = () => {
                             />
                         </div>
                         <div className="flex flex-col items-center lg:items-start">
-                            <h2 className="text-4xl font-bold ">Zahidul Islam</h2>
+                            <h2 className="text-4xl font-bold text-primary">Zahidul Islam</h2>
                             <p className=" text-sm">zahidpatoary2019@gmail.com</p>
                             <div className="text-center lg:text-left w-full my-4">
                                 <p>Information Technology</p>
                                 <p className="font-medium">
                                     Wakayama Computer College
-                                    <span className='text-green-500'> (和歌山コンピュータービジネス専門学校) </span>
+                                    
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="flex flex-col lg:flex-row justify-center gap-5 w-full">
-                        <div className="border p-10 rounded-3xl shadow-sm hover:shadow-xl lg:hover:scale-105 transition-all duration-200 bg-white">
-                            <h2 className="text-2xl uppercase font-semibold text-center mb-10">
+                        <div className="border p-10 rounded-3xl shadow-sm hover:shadow-xl bg-white">
+                            <h2 className="text-2xl uppercase font-semibold text-center mb-10 text-primary">
                                 My Projects
                             </h2>
-                            <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-5">
                                 <div>
                                     <h2 className="text-xl uppercase font-semibold mb-2">
                                         PKCARS
                                     </h2>
                                     <div>
                                         <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Live Site Link </p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
+                                            <p className="text-md ">Live Site Link :</p>
+                                            
                                             <a
-                                                className="text-primary font-bold"
+                                                className="text-primary font-bold hover:text-secondary ml-2"
                                                 href="https://pk-cars.web.app/"
                                                 target="blank_"
                                             >
                                                 PKCARS
                                             </a>
-                                        </div>
-
-                                        <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Client site code link</p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
-                                            <a
-                                                className="text-primary font-bold"
-                                                href="https://github.com/Patoary/pkcars-client"
-                                                target="blank_"
-                                            >
-                                                Github Client
-                                            </a>
-                                        </div>
-                                        <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Server site code link </p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
-                                            <a
-                                                className="text-primary font-bold"
-                                                href="https://github.com/Patoary/pkcars-server"
-                                                target="blank_"
-                                            >
-                                                Github Server
-                                            </a>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -79,29 +73,15 @@ const Portfolio = () => {
                                     </h2>
                                     <div>
                                         <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Live Site Link </p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
+                                            <p className="text-md">Live Site Link :</p>
                                             <a
-                                                className="text-primary font-bold"
+                                                className="text-primary font-bold hover:text-secondary ml-2"
                                                 href="https://single-flash-photography.web.app"
                                                 target="blank_"
                                             >
-                                                 Single Flash Photography
+                                                Photography
                                             </a>
                                         </div>
-
-                                        <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Client site code link</p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
-                                            <a
-                                                className="text-primary font-bold"
-                                                href="https://github.com/Patoary/single-flash-photography"
-                                                target="blank_"
-                                            >
-                                                Github Client
-                                            </a>
-                                        </div>
-                                       
                                     </div>
                                 </div>
                                 <div>
@@ -110,48 +90,30 @@ const Portfolio = () => {
                                     </h2>
                                     <div>
                                         <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Live Site Link </p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
+                                            <p className="text-md">Live Site Link :</p>
                                             <a
-                                                className="text-primary font-bold"
+                                                className="text-primary font-bold hover:text-secondary ml-2"
                                                 href="https://doctors-portal-11851.web.app/"
                                                 target="blank_"
                                             >
                                                 Doctors Portal
                                             </a>
                                         </div>
-
-                                        <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Client site code link</p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
-                                            <a
-                                                className="text-primary font-bold"
-                                                href="https://github.com/Patoary/doctors-portal-client"
-                                                target="blank_"
-                                            >
-                                                Github Client
-                                            </a>
-                                        </div>
-                                        <div className="flex mb-2 items-center">
-                                            <p className="text-xs">Client site code link</p>
-                                            <i className="mx-2 fa-solid fa-chevron-right"></i>
-                                            <a
-                                                className="text-primary font-bold"
-                                                href="https://github.com/Patoary/doctors-portal-server"
-                                                target="blank_"
-                                            >
-                                                Github Server
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="border p-10 rounded-3xl shadow-sm hover:shadow-xl lg:hover:scale-105 transition-all duration-200 bg-white">
-                            <h2 className="text-2xl uppercase font-semibold text-center mb-10">
+                        <div className="border p-10 rounded-3xl shadow-sm hover:shadow-xl bg-white">
+                            <h2 className="text-2xl uppercase font-semibold text-center mb-10 text-primary">
                                 skills that i have
                             </h2>
                             <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
+                                {
+                                    skills.map((skill, index) => <SkillCard
+                                    index= {index}
+                                    skill= {skill}
+                                    ></SkillCard>)
+                                }
                             </div>
                         </div>
                     </div>

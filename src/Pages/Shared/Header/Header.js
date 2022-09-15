@@ -48,6 +48,8 @@ const Header = ({ children }) => {
                     <ul onClick={() => setSidebar(!sidebar)} class="menu p-4 overflow-y-auto w-80 bg-primary text-white">
                         <li><CustomLink to='/' >Home</CustomLink></li>
                         <li><CustomLink to='/blogs' >Blogs</CustomLink></li>
+                        <li><CustomLink to='/products' >All Products</CustomLink></li>
+                        <li><CustomLink to='/portfolio'>Portfolio</CustomLink></li>
 
                         {
                             user
@@ -69,7 +71,7 @@ const Header = ({ children }) => {
                                 </div>
                             </div>
                         }
-                        <li><CustomLink to='/products' >Add Products</CustomLink></li>
+                        
 
                         <li>{user ? <button onClick={logout}>Logout</button> : <CustomLink to='/login'>Login</CustomLink>}</li>
                     </ul>
