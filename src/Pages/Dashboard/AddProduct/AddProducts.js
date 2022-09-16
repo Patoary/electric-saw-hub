@@ -12,9 +12,11 @@ const AddProducts = () => {
         }
         axiosPrivate.post('https://lit-wildwood-53633.herokuapp.com/product', newProductData)
         .then(res => {
-            if(res?.data?.result?.insertedId){
+         
+            console.log(res?.data?.insertedId);
+            if(res?.data?.insertedId){
                 toast.success('Added A New Product Successfully');
-                reset()
+                reset();
             }else{
                 toast.error('Failed To Add The Product')
             }
