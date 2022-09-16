@@ -11,7 +11,7 @@ const useAdmin = user => {
                 setAdmin(res.data.admin);
                 setAdminLoading(false);
             })
-    }, [user]);
+    }, [user,email]);
 
     return [admin, adminLoading]
 }

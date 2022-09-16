@@ -20,8 +20,8 @@ const Profile = () => {
         formState: { errors },
     } = useForm();
 
-    const { isLoading, refetch, isError } = useQuery(['userInfo', user.email], () =>
-        axiosPrivate.get(`https://lit-wildwood-53633.herokuapp.com/user-data?email=${user.email}`)
+    const { isLoading, refetch, isError } = useQuery(['userInfo', user?.email], () =>
+        axiosPrivate.get(`https://lit-wildwood-53633.herokuapp.com/user-data?email=${user?.email}`)
             .then(res => {
                 setUserInfo(res.data)
             })
@@ -33,7 +33,7 @@ const Profile = () => {
         return <Loading />;
     }
     if (error || isError) {
-        errorElement = <p className='text-red-500'><small>{error.message}</small></p>
+        errorElement = <p className='text-red-500'><small>{error?.message}</small></p>
     }
     const onSubmit = async (updatedInfo) => {
 

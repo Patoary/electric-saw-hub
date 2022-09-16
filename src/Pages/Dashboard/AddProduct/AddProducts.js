@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import axiosPrivate from '../../../Api/axiosPrivate';
 import Heading from '../../../Components/Heading/Heading';
 
@@ -10,7 +11,15 @@ const AddProducts = () => {
             ...data,
         }
         axiosPrivate.post('https://lit-wildwood-53633.herokuapp.com/product', newProductData)
-        reset();
+        .then(res => {
+            if(res?.data?.result?.insertedId){
+                toast.success('Added A New Product Successfully');
+                reset()
+            }else{
+                toast.error('Failed To Add The Product')
+            }
+        })
+        
     }
     return (
         <div className='bg-gradient-to-r from-[#00214124] to-[#19d3ae2e]'>
